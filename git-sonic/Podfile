@@ -1,0 +1,21 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'git-sonic' do
+  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for git-sonic
+  pod 'libpd', :git => 'https://github.com/libpd/libpd', :submodules => true
+
+  target 'git-sonicTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'git-sonicUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

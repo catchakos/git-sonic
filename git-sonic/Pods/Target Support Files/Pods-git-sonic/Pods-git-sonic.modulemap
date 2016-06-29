@@ -1,0 +1,6 @@
+framework module Pods_git_sonic {
+  umbrella header "Pods-git-sonic-umbrella.h"
+
+  export *
+  module * { export * }
+}
