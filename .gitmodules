@@ -1,0 +1,3 @@
+[submodule "git-sonic/Submodules/GitUp"]
+	path = git-sonic/Submodules/GitUp
+	url = https://github.com/git-up/GitUp.git
