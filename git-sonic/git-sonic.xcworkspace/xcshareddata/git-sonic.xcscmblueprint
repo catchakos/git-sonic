@@ -1,0 +1,44 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E8BED0B9D64A538ACF880F45B06246B85A4E5F45",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "23FA20E70D0528EA0774E7AEF649B9012F8A36AC" : 0,
+    "BE225267DC3B2D4E20DDA5A69C0155B71425F8BE" : 0,
+    "E8BED0B9D64A538ACF880F45B06246B85A4E5F45" : 0,
+    "70783EE7218D87FCBAABD7787F6E3A25EFFAFB2F" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "44B90B72-C8E8-4A9F-AFA3-3FBF426898C2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "23FA20E70D0528EA0774E7AEF649B9012F8A36AC" : "git-sonic\/git-sonic\/Submodules\/GitUp\/",
+    "BE225267DC3B2D4E20DDA5A69C0155B71425F8BE" : "git-sonic\/git-sonic\/Submodules\/GitUp\/GitUpKit\/Third-Party\/XLFacility\/",
+    "E8BED0B9D64A538ACF880F45B06246B85A4E5F45" : "git-sonic\/",
+    "70783EE7218D87FCBAABD7787F6E3A25EFFAFB2F" : "git-sonic\/git-sonic\/Submodules\/GitUp\/GitUpKit\/Third-Party\/libgit2\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "git-sonic",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "git-sonic\/git-sonic.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/git-up\/GitUp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "23FA20E70D0528EA0774E7AEF649B9012F8A36AC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/git-up\/libgit2.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "70783EE7218D87FCBAABD7787F6E3A25EFFAFB2F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/swisspol\/XLFacility.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BE225267DC3B2D4E20DDA5A69C0155B71425F8BE"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/catchakos\/git-sonic.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E8BED0B9D64A538ACF880F45B06246B85A4E5F45"
+    }
+  ]
+}

@@ -5,9 +5,9 @@
       location = "group:git-sonic.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Submodules/GitUp/GitUpKit/GitUpKit.xcodeproj">
+      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Pods/Pods.xcodeproj">
+      location = "group:Submodules/GitUp/GitUpKit/GitUpKit.xcodeproj">
    </FileRef>
 </Workspace>
