@@ -10,6 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    let instance = PDInstance()
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
 
@@ -33,6 +34,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
+        instance.launchPD()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +42,9 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func changedSliderValue(sender: UISlider) {
+        instance.changeFreq(sender.value)
+    }
+    
 }
 
