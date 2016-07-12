@@ -51,5 +51,19 @@ class GitFacadeTest: XCTestCase {
         let remote = remotes[0]
         XCTAssertTrue(remote.URL == url)
     }
-
+    
+    func testThatGetCommitsReturnsNonNil() {
+        let commits = try? GitFacade.getCommits(repo, branch: nil)
+        XCTAssertNotNil(commits)
+    }
+    
+    func testThatGetCommitsReturnsCommits() {
+        guard let  commits = try? GitFacade.getCommits(repo, branch: branch) else {
+            XCTFail("getCommits failed")
+            
+            return
+        }
+        XCTAssertGreaterThan(commits.count, 1)
+    }
+    
 }

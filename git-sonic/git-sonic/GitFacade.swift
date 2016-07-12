@@ -61,5 +61,63 @@ class GitFacade {
         
         return repo
     }
+    
+    // Returns the commits of the given branch (fallbacks to head) reverse-chronologically sorted.
+    class func getCommits(repository: GCRepository, branch: GCBranch? = nil) throws -> [GCHistoryCommit] {
+        let history = try repository.loadHistoryUsingSorting(GCHistorySorting.ReverseChronological)
+        var tipCommit: GCHistoryCommit
+        if let branch = branch {
+            let commit = try repository.lookupTipCommitForBranch(branch)
+            tipCommit = history.historyCommitForCommit(commit)
+        } else {
+            let commit = try repository.lookupTipCommitForBranch(history.HEADBranch)
+            tipCommit = history.historyCommitForCommit(commit)
+        }
+        let branchCommits = try self.getCommits(history, fromDescendant: tipCommit)
+        
+        return branchCommits
+    }
+    
+    // Returns commits between the two given in a breadth-first fashion and sorting commits in the same level reverse-chronologically.
+    class func getCommits(history: GCHistory, fromDescendant: GCHistoryCommit, toAncestor:GCHistoryCommit? = nil) throws -> [GCHistoryCommit] {
+        var sortedCommits = [GCHistoryCommit]() // result
+        var ancestorReached = false // stop condition
+        var buffer = [fromDescendant] // buffer of unsorted commits
+        history.walkAncestorsOfCommits([fromDescendant]) { (commit: GCHistoryCommit!, stop: UnsafeMutablePointer<ObjCBool>) in
+            // flush buffer
+            var commitsToFlush = [GCHistoryCommit]()
+            var indexesToRemoveFromBuffer = [Int]()
+            for child in commit.children as! [GCHistoryCommit] {
+                if let index = buffer.indexOf(child) {
+                    indexesToRemoveFromBuffer.append(index)
+                    commitsToFlush.append(child)
+                }
+            }
+            for index in indexesToRemoveFromBuffer.sort({$0 > $1}) {
+                buffer.removeAtIndex(index)
+            }
+            commitsToFlush.sortInPlace({ $0.date.compare($1.date) == NSComparisonResult.OrderedDescending })
+            sortedCommits.appendContentsOf(commitsToFlush)
+            // select new commit if appropriate
+            if let toCommit = toAncestor  {
+                if (toCommit.date.compare(commit.date) == NSComparisonResult.OrderedDescending) {
+                    if (ancestorReached) {
+                        stop.memory = true
+                    }
+                    
+                    return
+                } else if (toCommit == commit) {
+                    ancestorReached = true
+                }
+            }
+            buffer.append(commit)
+        }
+        // flush buffer and return selection
+        buffer.sortInPlace({ $0.date.compare($1.date) == NSComparisonResult.OrderedDescending })
+        sortedCommits.appendContentsOf(buffer)
+        assert(toAncestor == nil || sortedCommits.contains(toAncestor!))
+        
+        return sortedCommits
+    }
 
 }
