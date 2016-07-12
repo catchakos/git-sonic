@@ -17,6 +17,8 @@
 		2AA233E21D24869E001EF336 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AA233E01D24869E001EF336 /* LaunchScreen.storyboard */; };
 		2AA233ED1D24869E001EF336 /* git_sonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA233EC1D24869E001EF336 /* git_sonicTests.swift */; };
 		2AA233F81D24869E001EF336 /* git_sonicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA233F71D24869E001EF336 /* git_sonicUITests.swift */; };
+		84018C1F1D30C632009EE8A0 /* GitUpKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84018C1D1D30C611009EE8A0 /* GitUpKit.framework */; };
+		84018C201D30C632009EE8A0 /* GitUpKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84018C1D1D30C611009EE8A0 /* GitUpKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		840F3B851D3BF1710061927C /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B7D1D3BF1710061927C /* Branch.swift */; };
 		840F3B861D3BF1710061927C /* ChangeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B7E1D3BF1710061927C /* ChangeSet.swift */; };
 		840F3B871D3BF1710061927C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B7F1D3BF1710061927C /* File.swift */; };
@@ -25,7 +27,6 @@
 		840F3B931D3BF2890061927C /* GitCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B8F1D3BF2890061927C /* GitCommit.swift */; };
 		840F3B941D3BF2890061927C /* GitFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B901D3BF2890061927C /* GitFile.swift */; };
 		840F3B951D3BF2890061927C /* GitTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B911D3BF2890061927C /* GitTag.swift */; };
-		84F48D861D2C684200A0E725 /* GitUpKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F48D851D2C684200A0E725 /* GitUpKit.framework */; };
 		84F48D881D2C69BB00A0E725 /* GitUpKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F48D871D2C69BB00A0E725 /* GitUpKit.framework */; };
 		84F48D8A1D2C69C300A0E725 /* GitUpKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F48D891D2C69C300A0E725 /* GitUpKit.framework */; };
 		9D323945A55D1CA081480BB8 /* Pods_git_sonicTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87394652556DAE410D3A96B3 /* Pods_git_sonicTests.framework */; };
@@ -49,6 +50,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		84018C211D30C632009EE8A0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				84018C201D30C632009EE8A0 /* GitUpKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2AA233CF1D24869D001EF336 /* git-sonic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "git-sonic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AA233D21D24869D001EF336 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +85,7 @@
 		5E48A3791D2D0C000007DDE2 /* git_sonic-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "git_sonic-Bridging-Header.h"; sourceTree = "<group>"; };
 		5E48A37A1D2D0CCF0007DDE2 /* libpd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libpd.framework; path = "../../Library/Developer/Xcode/DerivedData/git-sonic-gfqbrzfmkoxzizfxhpaurkfaazmx/Build/Products/Debug-iphonesimulator/libpd/libpd.framework"; sourceTree = "<group>"; };
 		7A2DCE72E27FC3791DA90287 /* Pods-git-sonicUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-git-sonicUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-git-sonicUITests/Pods-git-sonicUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		84018C1D1D30C611009EE8A0 /* GitUpKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitUpKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/git-sonic-esjtqodwdwjtwmebdjmkmgxlvghq/Build/Products/Debug-iphonesimulator/GitUpKit.framework"; sourceTree = "<group>"; };
 		840F3B7D1D3BF1710061927C /* Branch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
 		840F3B7E1D3BF1710061927C /* ChangeSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeSet.swift; sourceTree = "<group>"; };
 		840F3B7F1D3BF1710061927C /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
@@ -78,7 +94,6 @@
 		840F3B8F1D3BF2890061927C /* GitCommit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitCommit.swift; sourceTree = "<group>"; };
 		840F3B901D3BF2890061927C /* GitFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitFile.swift; sourceTree = "<group>"; };
 		840F3B911D3BF2890061927C /* GitTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitTag.swift; sourceTree = "<group>"; };
-		84F48D851D2C684200A0E725 /* GitUpKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitUpKit.framework; path = "Submodules/GitUp/GitUpKit/build/Debug-iphoneos/GitUpKit.framework"; sourceTree = "<group>"; };
 		84F48D871D2C69BB00A0E725 /* GitUpKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitUpKit.framework; path = "Submodules/GitUp/GitUpKit/build/Debug-iphoneos/GitUpKit.framework"; sourceTree = "<group>"; };
 		84F48D891D2C69C300A0E725 /* GitUpKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitUpKit.framework; path = "Submodules/GitUp/GitUpKit/build/Debug-iphoneos/GitUpKit.framework"; sourceTree = "<group>"; };
 		87394652556DAE410D3A96B3 /* Pods_git_sonicTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_git_sonicTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,7 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84F48D861D2C684200A0E725 /* GitUpKit.framework in Frameworks */,
+				84018C1F1D30C632009EE8A0 /* GitUpKit.framework in Frameworks */,
 				0C5AD62B00AC9A552180EE02 /* Pods_git_sonic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,10 +218,10 @@
 		A2B07367AFD56F863787E6DD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84018C1D1D30C611009EE8A0 /* GitUpKit.framework */,
 				5E48A37A1D2D0CCF0007DDE2 /* libpd.framework */,
 				84F48D891D2C69C300A0E725 /* GitUpKit.framework */,
 				84F48D871D2C69BB00A0E725 /* GitUpKit.framework */,
-				84F48D851D2C684200A0E725 /* GitUpKit.framework */,
 				BAB0D34198636DA3300BD976 /* Pods_git_sonic.framework */,
 				87394652556DAE410D3A96B3 /* Pods_git_sonicTests.framework */,
 				D5AA41AB157BA17E964D4966 /* Pods_git_sonicUITests.framework */,
@@ -240,6 +255,7 @@
 				2AA233CD1D24869D001EF336 /* Resources */,
 				0461C094FAE303079173C483 /* [CP] Embed Pods Frameworks */,
 				C9C3A91ED267EC46E3374DA0 /* [CP] Copy Pods Resources */,
+				84018C211D30C632009EE8A0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -645,11 +661,8 @@
 			baseConfigurationReference = A8927ACD30DA88560F1C823E /* Pods-git-sonic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Submodules/GitUp/GitUpKit/build/Debug-iphoneos",
-				);
-				HEADER_SEARCH_PATHS = Pods/libpd/objc;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Pods/libpd/objc";
 				INFOPLIST_FILE = "git-sonic/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "phonegroove.git-sonic";
@@ -663,11 +676,8 @@
 			baseConfigurationReference = 41BE51156452BE2EDB9BB5EC /* Pods-git-sonic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Submodules/GitUp/GitUpKit/build/Debug-iphoneos",
-				);
-				HEADER_SEARCH_PATHS = Pods/libpd/objc;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Pods/libpd/objc";
 				INFOPLIST_FILE = "git-sonic/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "phonegroove.git-sonic";
@@ -681,15 +691,15 @@
 			baseConfigurationReference = 4E68161997FFC03040267EAE /* Pods-git-sonicTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Submodules/GitUp/GitUpKit/build/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Pods/libpd/objc";
 				INFOPLIST_FILE = "git-sonicTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "phonegroove.git-sonicTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/git-sonic/git_sonic-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/git-sonic.app/git-sonic";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -698,15 +708,15 @@
 			baseConfigurationReference = BD92E06D2F0806DC8AB1C6AB /* Pods-git-sonicTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Submodules/GitUp/GitUpKit/build/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Pods/libpd/objc";
 				INFOPLIST_FILE = "git-sonicTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "phonegroove.git-sonicTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/git-sonic/git_sonic-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/git-sonic.app/git-sonic";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
@@ -714,10 +724,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7A2DCE72E27FC3791DA90287 /* Pods-git-sonicUITests.debug.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Submodules/GitUp/GitUpKit/build/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "git-sonicUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "phonegroove.git-sonicUITests";
@@ -730,10 +737,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 90FEE96CF21E004E3ED20B21 /* Pods-git-sonicUITests.release.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Submodules/GitUp/GitUpKit/build/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "git-sonicUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "phonegroove.git-sonicUITests";
