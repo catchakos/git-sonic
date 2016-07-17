@@ -21,6 +21,10 @@
 		840F3B861D3BF1710061927C /* ChangeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B7E1D3BF1710061927C /* ChangeSet.swift */; };
 		840F3B871D3BF1710061927C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B7F1D3BF1710061927C /* File.swift */; };
 		840F3B8B1D3BF1710061927C /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B831D3BF1710061927C /* Tag.swift */; };
+		840F3B921D3BF2890061927C /* GitBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B8E1D3BF2890061927C /* GitBranch.swift */; };
+		840F3B931D3BF2890061927C /* GitCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B8F1D3BF2890061927C /* GitCommit.swift */; };
+		840F3B941D3BF2890061927C /* GitFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B901D3BF2890061927C /* GitFile.swift */; };
+		840F3B951D3BF2890061927C /* GitTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B911D3BF2890061927C /* GitTag.swift */; };
 		84F48D861D2C684200A0E725 /* GitUpKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F48D851D2C684200A0E725 /* GitUpKit.framework */; };
 		84F48D881D2C69BB00A0E725 /* GitUpKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F48D871D2C69BB00A0E725 /* GitUpKit.framework */; };
 		84F48D8A1D2C69C300A0E725 /* GitUpKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F48D891D2C69C300A0E725 /* GitUpKit.framework */; };
@@ -70,6 +74,10 @@
 		840F3B7E1D3BF1710061927C /* ChangeSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeSet.swift; sourceTree = "<group>"; };
 		840F3B7F1D3BF1710061927C /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		840F3B831D3BF1710061927C /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		840F3B8E1D3BF2890061927C /* GitBranch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitBranch.swift; sourceTree = "<group>"; };
+		840F3B8F1D3BF2890061927C /* GitCommit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitCommit.swift; sourceTree = "<group>"; };
+		840F3B901D3BF2890061927C /* GitFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitFile.swift; sourceTree = "<group>"; };
+		840F3B911D3BF2890061927C /* GitTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitTag.swift; sourceTree = "<group>"; };
 		84F48D851D2C684200A0E725 /* GitUpKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitUpKit.framework; path = "Submodules/GitUp/GitUpKit/build/Debug-iphoneos/GitUpKit.framework"; sourceTree = "<group>"; };
 		84F48D871D2C69BB00A0E725 /* GitUpKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitUpKit.framework; path = "Submodules/GitUp/GitUpKit/build/Debug-iphoneos/GitUpKit.framework"; sourceTree = "<group>"; };
 		84F48D891D2C69C300A0E725 /* GitUpKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitUpKit.framework; path = "Submodules/GitUp/GitUpKit/build/Debug-iphoneos/GitUpKit.framework"; sourceTree = "<group>"; };
@@ -138,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				840F3B7B1D3BF1590061927C /* version control protocols */,
+				840F3B8D1D3BF2760061927C /* git */,
 				2AA233D21D24869D001EF336 /* AppDelegate.swift */,
 				2AA233D71D24869E001EF336 /* MasterViewController.swift */,
 				5E48A3791D2D0C000007DDE2 /* git_sonic-Bridging-Header.h */,
@@ -178,6 +187,17 @@
 				840F3B831D3BF1710061927C /* Tag.swift */,
 			);
 			name = "version control protocols";
+			sourceTree = "<group>";
+		};
+		840F3B8D1D3BF2760061927C /* git */ = {
+			isa = PBXGroup;
+			children = (
+				840F3B8E1D3BF2890061927C /* GitBranch.swift */,
+				840F3B8F1D3BF2890061927C /* GitCommit.swift */,
+				840F3B901D3BF2890061927C /* GitFile.swift */,
+				840F3B911D3BF2890061927C /* GitTag.swift */,
+			);
+			name = git;
 			sourceTree = "<group>";
 		};
 		A2B07367AFD56F863787E6DD /* Frameworks */ = {
@@ -470,13 +490,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				840F3B8B1D3BF1710061927C /* Tag.swift in Sources */,
+				840F3B931D3BF2890061927C /* GitCommit.swift in Sources */,
 				2AA233D31D24869D001EF336 /* AppDelegate.swift in Sources */,
 				840F3B851D3BF1710061927C /* Branch.swift in Sources */,
 				2AA233D61D24869E001EF336 /* git_sonic.xcdatamodeld in Sources */,
 				840F3B861D3BF1710061927C /* ChangeSet.swift in Sources */,
+				840F3B941D3BF2890061927C /* GitFile.swift in Sources */,
 				2AA233D81D24869E001EF336 /* MasterViewController.swift in Sources */,
 				840F3B871D3BF1710061927C /* File.swift in Sources */,
+				840F3B921D3BF2890061927C /* GitBranch.swift in Sources */,
 				2AA233DA1D24869E001EF336 /* DetailViewController.swift in Sources */,
+				840F3B951D3BF2890061927C /* GitTag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
