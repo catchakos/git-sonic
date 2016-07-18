@@ -28,3 +28,11 @@ public protocol Branch {
     var tipCommit: ChangeSet { get }
     var remote: Bool { get }
 }
+
+extension  Branch {
+    
+    var local: Bool {
+        
+        return !remote
+    }
+}

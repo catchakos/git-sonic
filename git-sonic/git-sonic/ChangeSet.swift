@@ -48,3 +48,66 @@ public protocol ChangeSet {
     var insertedLines: Int {get}
     var modifiedLines: Int {get}
 }
+
+extension ChangeSet {
+    
+    var shortSHA1: String {
+        
+        let index = SHA1.startIndex.advancedBy(7)
+        
+        return SHA1.substringToIndex(index)
+    }
+    
+    var summary: String {
+        
+        let components = fullMessage.componentsSeparatedByString("\n")
+        
+        return components.last!
+    }
+    
+    var description: String? {
+        
+        var description: String?
+        let range = fullMessage.rangeOfString("\(fullMessage)\n")
+        if let range = range {
+            description = fullMessage.substringFromIndex(range.endIndex)
+        }
+        
+        return description
+    }
+    
+    var root: Bool {
+        
+        return (parents.count == 0)
+    }
+    
+    var leaf: Bool {
+        
+        return (children.count == 0)
+    }
+    
+    var hasReferences: Bool {
+        
+        return (tags.count > 0 || tippedBranches.count > 0)
+    }
+    
+    var remoteBranches: [Branch] {
+        
+        return tippedBranches.filter({$0.remote})
+    }
+    
+    var localBranches: [Branch] {
+        
+        return tippedBranches.filter({$0.local})
+    }
+    
+    var insertions: Int {
+        
+        return (insertedLines + modifiedLines)
+    }
+    
+    var deletions: Int {
+        
+        return (deletedLines + modifiedLines)
+    }
+}
