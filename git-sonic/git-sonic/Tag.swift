@@ -29,3 +29,8 @@ public protocol Tag {
     var tagger: String { get }
     var tipCommit: ChangeSet { get }
 }
+
+public func ==(lhs: Tag, rhs: Tag) -> Bool {
+    
+    return (lhs.name == rhs.name && lhs.message == rhs.message && lhs.tagger == rhs.tagger && lhs.tipCommit == rhs.tipCommit)
+}

@@ -36,3 +36,8 @@ public extension  Branch {
         return !remote
     }
 }
+
+public func ==(lhs: Branch, rhs: Branch) -> Bool {
+    
+    return (lhs.name == rhs.name && lhs.tipCommit == rhs.tipCommit && lhs.remote == rhs.remote)
+}

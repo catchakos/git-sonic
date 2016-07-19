@@ -49,6 +49,11 @@ public protocol ChangeSet {
     var modifiedLines: Int { get }
 }
 
+public func ==(lhs: ChangeSet, rhs: ChangeSet) -> Bool {
+    
+    return (lhs.SHA1 == rhs.SHA1)
+}
+
 public extension ChangeSet {
     
     var shortSHA1: String {

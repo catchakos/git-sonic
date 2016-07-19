@@ -40,6 +40,11 @@ public protocol FileChange {
     var oldFile: File? { get }
 }
 
+public func ==(lhs: FileChange, rhs: FileChange) -> Bool {
+    
+    return (lhs.type == rhs.type && lhs.canonicalPath == rhs.canonicalPath)
+}
+
 public extension FileChange {
     
     var canonicalPath: String {
@@ -58,4 +63,9 @@ public protocol File {
     
     var path: String { get }
     var SHA1: String { get }
+}
+
+public func ==(lhs: File, rhs: File) -> Bool {
+    
+    return (lhs.path == rhs.path && lhs.SHA1 == rhs.SHA1)
 }
