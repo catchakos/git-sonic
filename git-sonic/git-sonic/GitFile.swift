@@ -22,6 +22,22 @@
 
 import Foundation
 
+class GitFileChange: FileChange {
+    
+    var type: FileChangeType
+    
+    var newFile: File?
+    var oldFile: File?
+    
+    init(type: FileChangeType, newFile: File?, oldFile: File?) {
+        
+        assert(newFile != nil || oldFile != nil)
+        self.type = type
+        self.newFile = newFile
+        self.oldFile = oldFile
+    }
+}
+
 class GitFile: File {
     
     var path: String
