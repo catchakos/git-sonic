@@ -42,14 +42,14 @@ public protocol ChangeSet {
     var tippedBranches: [Branch] { get }
     var tags: [Tag] { get }
     
-    var fileChanges: [FileChange] {get}
+    var fileChanges: [FileChange] { get }
     
-    var deletedLines: Int {get}
-    var insertedLines: Int {get}
-    var modifiedLines: Int {get}
+    var deletedLines: Int { get }
+    var insertedLines: Int { get }
+    var modifiedLines: Int { get }
 }
 
-extension ChangeSet {
+public extension ChangeSet {
     
     var shortSHA1: String {
         

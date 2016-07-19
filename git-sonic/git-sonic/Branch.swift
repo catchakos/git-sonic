@@ -29,7 +29,7 @@ public protocol Branch {
     var remote: Bool { get }
 }
 
-extension  Branch {
+public extension  Branch {
     
     var local: Bool {
         

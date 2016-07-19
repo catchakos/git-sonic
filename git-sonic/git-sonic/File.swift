@@ -22,20 +22,27 @@
 
 import Foundation
 
-public struct FileChange {
+public enum FileChangeType {
     
-    var added = false
-    var deleted = false
-    var modified = false
+    case Added
+    case Deleted
+    case Modified
+    case Renamed
+    case Copied
+    case TypeChanged
+}
+
+public protocol FileChange {
     
-    var renamed = false
-    var copied = false
-    var typeChanged = false
+    var type: FileChangeType { get }
     
-    var newFile: File?
-    var oldFile: File?
+    var newFile: File? { get }
+    var oldFile: File? { get }
+}
+
+public extension FileChange {
     
-    func canonicalPath() -> String {
+    var canonicalPath: String {
         
         if let newFile = newFile {
             
