@@ -25,8 +25,14 @@ import XCTest
 
 class GitVersionControlProtocolsTests: XCTestCase {
     
-    let aCommit = GitCommit(SHA1: "the SHA1", fullMessage: "the full message", authorName: "author name", authorEmail: "author email", committerName: "committer name", committerEmail: "committer email", committerDate: NSDate(), authorDate: NSDate(), parents: [ChangeSet](), children: [ChangeSet](), tippedBranches: [Branch](), tags: [Tag](), fileChanges: [FileChange](), deletedLines: 0, insertedLines: 0, modifiedLines: 0)
+    let aCommit = GitCommit(SHA1: "a SHA1", fullMessage: "a full message", authorName: "author name", authorEmail: "author email", committerName: "committer name", committerEmail: "committer email", committerDate: NSDate(), authorDate: NSDate(), parents: [ChangeSet](), children: [ChangeSet](), tippedBranches: [Branch](), tags: [Tag](), fileChanges: [FileChange](), deletedLines: 1, insertedLines: 2, modifiedLines: 3)
 
+    let anotherCommit = GitCommit(SHA1: "the SHA1", fullMessage: "the full message", authorName: "the author name", authorEmail: "the author email", committerName: "the committer name", committerEmail: "the committer email", committerDate: NSDate(), authorDate: NSDate(), parents: [ChangeSet](), children: [ChangeSet](), tippedBranches: [Branch](), tags: [Tag](), fileChanges: [FileChange](), deletedLines: 4, insertedLines: 5, modifiedLines: 6)
+    
+    let aFileChange = GitFileChange(type: .Added, newFile: GitFile(path: "a path", SHA1: "a SHA1"), oldFile: nil)
+
+    let anotherFileChange = GitFileChange(type: .Deleted, newFile: GitFile(path: "the path", SHA1: "the SHA1"), oldFile: nil)
+    
     func testThatGitBranchConstructorInitializesProperties() {
         
         let name = "the name"
@@ -34,7 +40,7 @@ class GitVersionControlProtocolsTests: XCTestCase {
         let remote = true
         let branch: Branch = GitBranch(name: name, tipCommit: tipCommit, remote: remote)
         XCTAssertEqual(branch.name, name)
-        //TODO: XCTAssertEqual(branch.tipCommit, tipCommit)
+        XCTAssertTrue(branch.tipCommit == tipCommit)
         XCTAssertEqual(branch.remote, remote)
     }
     
@@ -48,7 +54,7 @@ class GitVersionControlProtocolsTests: XCTestCase {
         XCTAssertEqual(tag.name, name)
         XCTAssertEqual(tag.message, message)
         XCTAssertEqual(tag.tagger, tagger)
-        //TODO: XCTAssertEqual(tag.tipCommit, tipCommit)
+        XCTAssertTrue(tag.tipCommit == tipCommit)
     }
 
     func testThatGitFileConstructorInitializesProperties() {
@@ -58,6 +64,17 @@ class GitVersionControlProtocolsTests: XCTestCase {
         let file: File = GitFile(path: path, SHA1: SHA1)
         XCTAssertEqual(file.path, path)
         XCTAssertEqual(file.SHA1, SHA1)
+    }
+    
+    func testThatGitFileChangeConstructorInitializesProperties() {
+        
+        let type: FileChangeType = .Renamed
+        let newFile: File = GitFile(path: "a path", SHA1: "a SHA1")
+        let oldFile: File = GitFile(path: "the path", SHA1: "the SHA1")
+        let fileChange = GitFileChange(type: type, newFile: newFile, oldFile: oldFile)
+        XCTAssertEqual(fileChange.type, type)
+        XCTAssertTrue(fileChange.newFile! == newFile)
+        XCTAssertTrue(fileChange.oldFile! == oldFile)
     }
     
     func testThatGitCommitConstructorInitializesProperties() {
@@ -70,11 +87,11 @@ class GitVersionControlProtocolsTests: XCTestCase {
         let committerName = "the committer name"
         let committerEmail = "the committer email"
         let committerDate = NSDate()
-        let parents = [ChangeSet]()
-        let children = [ChangeSet]()
-        let tippedBranches = [Branch]()
-        let tags = [Tag]()
-        let fileChanges = [FileChange]()
+        let parents: [ChangeSet] = [aCommit]
+        let children: [ChangeSet] = [anotherCommit]
+        let tippedBranches: [Branch] = [GitBranch(name: "a name", tipCommit: aCommit, remote: true)]
+        let tags: [Tag] = [GitTag(name: "a name", message: "a message", tagger: "a tagger", tipCommit: aCommit)]
+        let fileChanges: [FileChange] = [aFileChange, anotherFileChange]
         let deletedLines = 3
         let insertedLines = 5
         let modifiedLines = 7
@@ -87,11 +104,36 @@ class GitVersionControlProtocolsTests: XCTestCase {
         XCTAssertEqual(changeSet.committerEmail, committerEmail)
         XCTAssertEqual(changeSet.committerDate, committerDate)
         XCTAssertEqual(changeSet.authorDate, authorDate)
-        //TODO: XCTAssertEqual(changeSet.parents, parents)
-        //TODO: XCTAssertEqual(changeSet.children, children)
-        //TODO: XCTAssertEqual(changeSet.tippedBranches, tippedBranches)
-        //TODO: XCTAssertEqual(changeSet.tags, tags)
-        //TODO: XCTAssertEqual(changeSet.fileChanges, fileChanges)
+        XCTAssertEqual(changeSet.parents.count, parents.count)
+        for parent in changeSet.parents {
+            XCTAssertTrue(parents.contains({ changeSet in
+                return parent == changeSet
+            }))
+        }
+        XCTAssertEqual(changeSet.children.count, children.count)
+        for child in changeSet.children {
+            XCTAssertTrue(children.contains({ changeSet in
+                return child == changeSet
+            }))
+        }
+        XCTAssertEqual(changeSet.tippedBranches.count, tippedBranches.count)
+        for tippedBranch in changeSet.tippedBranches {
+            XCTAssertTrue(tippedBranches.contains({ branch in
+                return tippedBranch == branch
+            }))
+        }
+        XCTAssertEqual(changeSet.tags.count, tags.count)
+        for changeSetTag in changeSet.tags {
+            XCTAssertTrue(tags.contains({ tag in
+                return changeSetTag == tag
+            }))
+        }
+        XCTAssertEqual(changeSet.fileChanges.count, fileChanges.count)
+        for change in changeSet.fileChanges {
+            XCTAssertTrue(fileChanges.contains({ fileChange in
+                return change == fileChange
+            }))
+        }
         XCTAssertEqual(changeSet.deletedLines, deletedLines)
         XCTAssertEqual(changeSet.insertedLines, insertedLines)
         XCTAssertEqual(changeSet.modifiedLines, modifiedLines)
