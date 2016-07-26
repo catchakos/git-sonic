@@ -1,4 +1,4 @@
-// GitCommit.swift
+// ChangeSet.swift
 //
 // Copyright (c) 2016 phonegroove. All rights reserved.
 //
