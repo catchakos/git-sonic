@@ -25,9 +25,9 @@ import XCTest
 
 class GitVersionControlProtocolsTests: XCTestCase {
     
-    let aCommit = GitCommit(SHA1: "a SHA1", fullMessage: "a full message", authorName: "author name", authorEmail: "author email", committerName: "committer name", committerEmail: "committer email", committerDate: NSDate(), authorDate: NSDate(), parents: [ChangeSet](), fileChanges: [FileChange](), deletedLines: 1, insertedLines: 2, modifiedLines: 3, conflicts: 4)
+    let aCommit = GitCommit(SHA1: "a SHA1", fullMessage: "a full message", authorName: "author name", authorEmail: "author email", committerName: "committer name", committerEmail: "committer email", committerDate: NSDate(), authorDate: NSDate(), parents: [ChangeSet](), children: [ChangeSet](), fileChanges: [FileChange](), deletedLines: 1, insertedLines: 2, modifiedLines: 3, conflicts: 4)
 
-    let anotherCommit = GitCommit(SHA1: "the SHA1", fullMessage: "the full message", authorName: "the author name", authorEmail: "the author email", committerName: "the committer name", committerEmail: "the committer email", committerDate: NSDate(), authorDate: NSDate(), parents: [ChangeSet](), fileChanges: [FileChange](), deletedLines: 4, insertedLines: 5, modifiedLines: 6, conflicts: 7)
+    let anotherCommit = GitCommit(SHA1: "the SHA1", fullMessage: "the full message", authorName: "the author name", authorEmail: "the author email", committerName: "the committer name", committerEmail: "the committer email", committerDate: NSDate(), authorDate: NSDate(), parents: [ChangeSet](), children: [ChangeSet](), fileChanges: [FileChange](), deletedLines: 4, insertedLines: 5, modifiedLines: 6, conflicts: 7)
     
     let aFileChange = GitFileChange(type: .Added, newFile: GitFile(path: "a path", SHA1: "a SHA1"), oldFile: nil)
 
@@ -88,12 +88,13 @@ class GitVersionControlProtocolsTests: XCTestCase {
         let committerEmail = "the committer email"
         let committerDate = NSDate()
         let parents: [ChangeSet] = [aCommit]
+        let children: [ChangeSet] = [anotherCommit]
         let fileChanges: [FileChange] = [aFileChange, anotherFileChange]
         let deletedLines = 3
         let insertedLines = 5
         let modifiedLines = 7
         let conflicts = 8
-        let changeSet: ChangeSet = GitCommit(SHA1: SHA1, fullMessage: fullMessage, authorName: authorName, authorEmail: authorEmail, committerName: committerName, committerEmail: committerEmail, committerDate: committerDate, authorDate: authorDate, parents: parents, fileChanges: fileChanges, deletedLines: deletedLines, insertedLines: insertedLines, modifiedLines: modifiedLines, conflicts: conflicts)
+        let changeSet: ChangeSet = GitCommit(SHA1: SHA1, fullMessage: fullMessage, authorName: authorName, authorEmail: authorEmail, committerName: committerName, committerEmail: committerEmail, committerDate: committerDate, authorDate: authorDate, parents: parents, children: children, fileChanges: fileChanges, deletedLines: deletedLines, insertedLines: insertedLines, modifiedLines: modifiedLines, conflicts: conflicts)
         XCTAssertEqual(changeSet.SHA1, SHA1)
         XCTAssertEqual(changeSet.fullMessage, fullMessage)
         XCTAssertEqual(changeSet.authorName, authorName)
@@ -106,9 +107,10 @@ class GitVersionControlProtocolsTests: XCTestCase {
         for index in 0 ..< parents.count {
             XCTAssertTrue(parents[index] == changeSet.parents[index])
         }
-        XCTAssertEqual(changeSet.children.count, 0)
-        XCTAssertEqual(changeSet.tippedBranches.count, 0)
-        XCTAssertEqual(changeSet.tags.count, 0)
+        XCTAssertEqual(changeSet.children.count, children.count)
+        for index in 0 ..< children.count {
+            XCTAssertTrue(children[index] == changeSet.children[index])
+        }
         XCTAssertEqual(changeSet.fileChanges.count, fileChanges.count)
         for index in 0 ..< fileChanges.count {
             XCTAssertTrue(fileChanges[index] == changeSet.fileChanges[index])

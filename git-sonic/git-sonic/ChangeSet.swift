@@ -48,6 +48,7 @@ public protocol ChangeSet {
     var insertedLines: Int { get }
     var modifiedLines: Int { get }
     
+    var conflicts: Int { get }
 }
 
 public extension ChangeSet {
@@ -111,7 +112,6 @@ public extension ChangeSet {
         
         return (deletedLines + modifiedLines)
     }
-    
 }
 
 public func ==(lhs: ChangeSet, rhs: ChangeSet) -> Bool {

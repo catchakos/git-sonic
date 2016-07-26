@@ -47,8 +47,10 @@ class GitCommit: ChangeSet, Equatable {
     var deletedLines: Int
     var insertedLines: Int
     var modifiedLines: Int
+
+    var conflicts: Int
     
-    init(SHA1: String, fullMessage: String, authorName: String, authorEmail: String, committerName: String, committerEmail: String, committerDate: NSDate, authorDate: NSDate, parents: [ChangeSet], children: [ChangeSet], tippedBranches: [Branch], tags: [Tag], fileChanges: [FileChange], deletedLines: Int, insertedLines: Int, modifiedLines: Int) {
+    init(SHA1: String, fullMessage: String, authorName: String, authorEmail: String, committerName: String, committerEmail: String, committerDate: NSDate, authorDate: NSDate, parents: [ChangeSet], fileChanges: [FileChange], deletedLines: Int, insertedLines: Int, modifiedLines: Int, conflicts: Int) {
         
         self.SHA1 = SHA1
         self.fullMessage = fullMessage
@@ -59,12 +61,13 @@ class GitCommit: ChangeSet, Equatable {
         self.committerEmail = committerEmail
         self.committerDate = committerDate
         self.parents = parents
-        self.children = children
-        self.tippedBranches = tippedBranches
-        self.tags = tags
+        self.children = [ChangeSet]()
+        self.tippedBranches = [Branch]()
+        self.tags = [Tag]()
         self.fileChanges = fileChanges
         self.deletedLines = deletedLines
         self.insertedLines = insertedLines
         self.modifiedLines = modifiedLines
+        self.conflicts = conflicts
     }
 }
