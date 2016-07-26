@@ -22,7 +22,7 @@
 
 import Foundation
 
-class GitCommit: ChangeSet {
+class GitCommit: ChangeSet, Equatable {
     
     var SHA1: String
     

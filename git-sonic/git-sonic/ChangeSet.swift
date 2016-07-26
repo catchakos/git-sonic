@@ -47,11 +47,7 @@ public protocol ChangeSet {
     var deletedLines: Int { get }
     var insertedLines: Int { get }
     var modifiedLines: Int { get }
-}
-
-public func ==(lhs: ChangeSet, rhs: ChangeSet) -> Bool {
     
-    return (lhs.SHA1 == rhs.SHA1)
 }
 
 public extension ChangeSet {
@@ -115,4 +111,15 @@ public extension ChangeSet {
         
         return (deletedLines + modifiedLines)
     }
+    
+}
+
+public func ==(lhs: ChangeSet, rhs: ChangeSet) -> Bool {
+    
+    return (lhs.SHA1 == rhs.SHA1)
+}
+
+public func ==<T: ChangeSet>(lhs: T, rhs: T) -> Bool {
+    
+    return (lhs as ChangeSet) == (rhs as ChangeSet)
 }

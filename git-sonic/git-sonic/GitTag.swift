@@ -22,7 +22,7 @@
 
 import Foundation
 
-class GitTag: Tag {
+class GitTag: Tag, Equatable {
     
     var name: String
     var message: String

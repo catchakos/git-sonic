@@ -22,7 +22,7 @@
 
 import Foundation
 
-class GitFileChange: FileChange {
+class GitFileChange: FileChange, Equatable {
     
     var type: FileChangeType
     
@@ -38,7 +38,7 @@ class GitFileChange: FileChange {
     }
 }
 
-class GitFile: File {
+class GitFile: File, Equatable {
     
     var path: String
     var SHA1: String

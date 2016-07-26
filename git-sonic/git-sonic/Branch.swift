@@ -41,3 +41,8 @@ public func ==(lhs: Branch, rhs: Branch) -> Bool {
     
     return (lhs.name == rhs.name && lhs.tipCommit == rhs.tipCommit && lhs.remote == rhs.remote)
 }
+
+public func ==<T: Branch>(lhs: T, rhs: T) -> Bool {
+    
+    return (lhs as Branch) == (rhs as Branch)
+}

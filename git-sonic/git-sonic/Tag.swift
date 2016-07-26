@@ -34,3 +34,8 @@ public func ==(lhs: Tag, rhs: Tag) -> Bool {
     
     return (lhs.name == rhs.name && lhs.message == rhs.message && lhs.tagger == rhs.tagger && lhs.tipCommit == rhs.tipCommit)
 }
+
+public func ==<T: Tag>(lhs: T, rhs: T) -> Bool {
+    
+    return (lhs as Tag) == (rhs as Tag)
+}

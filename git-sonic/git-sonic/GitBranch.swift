@@ -22,7 +22,7 @@
 
 import Foundation
 
-class GitBranch: Branch {
+class GitBranch: Branch, Equatable {
     
     var name: String
     var tipCommit: ChangeSet
