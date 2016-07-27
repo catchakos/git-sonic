@@ -30,6 +30,7 @@
 		84F1B5C61D3D9C5E00704C8C /* GitVersionControlProtocolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F1B5C51D3D9C5E00704C8C /* GitVersionControlProtocolsTests.swift */; };
 		84F48D881D2C69BB00A0E725 /* GitUpKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F48D871D2C69BB00A0E725 /* GitUpKit.framework */; };
 		84F48D8A1D2C69C300A0E725 /* GitUpKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F48D891D2C69C300A0E725 /* GitUpKit.framework */; };
+		84F4A1251D482BD100519FF6 /* GitChangeSetExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F4A1241D482BD100519FF6 /* GitChangeSetExtensionTests.swift */; };
 		9D323945A55D1CA081480BB8 /* Pods_git_sonicTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87394652556DAE410D3A96B3 /* Pods_git_sonicTests.framework */; };
 		E6E33297E12A2D0565502C82 /* Pods_git_sonicUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AA41AB157BA17E964D4966 /* Pods_git_sonicUITests.framework */; };
 /* End PBXBuildFile section */
@@ -98,6 +99,7 @@
 		84F1B5C51D3D9C5E00704C8C /* GitVersionControlProtocolsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitVersionControlProtocolsTests.swift; sourceTree = "<group>"; };
 		84F48D871D2C69BB00A0E725 /* GitUpKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitUpKit.framework; path = "Submodules/GitUp/GitUpKit/build/Debug-iphoneos/GitUpKit.framework"; sourceTree = "<group>"; };
 		84F48D891D2C69C300A0E725 /* GitUpKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitUpKit.framework; path = "Submodules/GitUp/GitUpKit/build/Debug-iphoneos/GitUpKit.framework"; sourceTree = "<group>"; };
+		84F4A1241D482BD100519FF6 /* GitChangeSetExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitChangeSetExtensionTests.swift; sourceTree = "<group>"; };
 		87394652556DAE410D3A96B3 /* Pods_git_sonicTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_git_sonicTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90FEE96CF21E004E3ED20B21 /* Pods-git-sonicUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-git-sonicUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-git-sonicUITests/Pods-git-sonicUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A8927ACD30DA88560F1C823E /* Pods-git-sonic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-git-sonic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-git-sonic/Pods-git-sonic.debug.xcconfig"; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				2AA233EC1D24869E001EF336 /* git_sonicTests.swift */,
+				84F4A1241D482BD100519FF6 /* GitChangeSetExtensionTests.swift */,
 				84F1B5C51D3D9C5E00704C8C /* GitVersionControlProtocolsTests.swift */,
 				2AA233EE1D24869E001EF336 /* Info.plist */,
 			);
@@ -529,6 +532,7 @@
 			files = (
 				2AA233ED1D24869E001EF336 /* git_sonicTests.swift in Sources */,
 				84F1B5C61D3D9C5E00704C8C /* GitVersionControlProtocolsTests.swift in Sources */,
+				84F4A1251D482BD100519FF6 /* GitChangeSetExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

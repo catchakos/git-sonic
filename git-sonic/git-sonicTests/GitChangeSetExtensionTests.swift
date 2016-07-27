@@ -1,4 +1,4 @@
-// GitVersionControlProtocolsTests.swift
+// GitChangeSetExtensionTests.swift
 //
 // Copyright (c) 2016 phonegroove. All rights reserved.
 //
@@ -23,101 +23,169 @@
 import XCTest
 @testable import git_sonic
 
-class GitVersionControlProtocolsTests: XCTestCase {
+class GitChangeSetExtensionTests: XCTestCase {
     
-    let aCommit = GitCommit(SHA1: "a SHA1", fullMessage: "a full message", authorName: "author name", authorEmail: "author email", committerName: "committer name", committerEmail: "committer email", committerDate: NSDate(), authorDate: NSDate(), parents: [ChangeSet](), children: [ChangeSet](), fileChanges: [FileChange](), deletedLines: 1, insertedLines: 2, modifiedLines: 3, conflicts: 4)
-
-    let anotherCommit = GitCommit(SHA1: "the SHA1", fullMessage: "the full message", authorName: "the author name", authorEmail: "the author email", committerName: "the committer name", committerEmail: "the committer email", committerDate: NSDate(), authorDate: NSDate(), parents: [ChangeSet](), children: [ChangeSet](), fileChanges: [FileChange](), deletedLines: 4, insertedLines: 5, modifiedLines: 6, conflicts: 7)
-    
-    let aFileChange = GitFileChange(type: .Added, newFile: GitFile(path: "a path", SHA1: "a SHA1"), oldFile: nil)
-
-    let anotherFileChange = GitFileChange(type: .Deleted, newFile: GitFile(path: "the path", SHA1: "the SHA1"), oldFile: nil)
-    
-    func testThatGitBranchConstructorInitializesProperties() {
+    func buildCommit(SHA1: String, parents: [ChangeSet]) -> ChangeSet {
         
-        let name = "the name"
-        let tipCommit: ChangeSet = aCommit
-        let remote = true
-        let branch: Branch = GitBranch(name: name, tipCommit: tipCommit, remote: remote)
-        XCTAssertEqual(branch.name, name)
-        XCTAssertTrue(branch.tipCommit == tipCommit)
-        XCTAssertEqual(branch.remote, remote)
-    }
-    
-    func testThatGitTagConstructorInitializesProperties() {
-        
-        let name = "the name"
-        let message = "the message"
-        let tagger = "the tagger"
-        let tipCommit: ChangeSet = aCommit
-        let tag: Tag = GitTag(name: name, message: message, tagger: tagger, tipCommit: tipCommit)
-        XCTAssertEqual(tag.name, name)
-        XCTAssertEqual(tag.message, message)
-        XCTAssertEqual(tag.tagger, tagger)
-        XCTAssertTrue(tag.tipCommit == tipCommit)
-    }
-
-    func testThatGitFileConstructorInitializesProperties() {
-        
-        let path = "the path"
-        let SHA1 = "the SHA1"
-        let file: File = GitFile(path: path, SHA1: SHA1)
-        XCTAssertEqual(file.path, path)
-        XCTAssertEqual(file.SHA1, SHA1)
-    }
-    
-    func testThatGitFileChangeConstructorInitializesProperties() {
-        
-        let type: FileChangeType = .Renamed
-        let newFile: File = GitFile(path: "a path", SHA1: "a SHA1")
-        let oldFile: File = GitFile(path: "the path", SHA1: "the SHA1")
-        let fileChange = GitFileChange(type: type, newFile: newFile, oldFile: oldFile)
-        XCTAssertEqual(fileChange.type, type)
-        XCTAssertTrue(fileChange.newFile! == newFile)
-        XCTAssertTrue(fileChange.oldFile! == oldFile)
-    }
-    
-    func testThatGitCommitConstructorInitializesProperties() {
-        
-        let SHA1 = "the SHA1"
-        let fullMessage = "the full message"
-        let authorName = "the author name"
-        let authorEmail = "the author email"
-        let authorDate = NSDate()
-        let committerName = "the committer name"
-        let committerEmail = "the committer email"
-        let committerDate = NSDate()
-        let parents: [ChangeSet] = [aCommit]
-        let children: [ChangeSet] = [anotherCommit]
-        let fileChanges: [FileChange] = [aFileChange, anotherFileChange]
-        let deletedLines = 3
-        let insertedLines = 5
-        let modifiedLines = 7
-        let conflicts = 8
-        let changeSet: ChangeSet = GitCommit(SHA1: SHA1, fullMessage: fullMessage, authorName: authorName, authorEmail: authorEmail, committerName: committerName, committerEmail: committerEmail, committerDate: committerDate, authorDate: authorDate, parents: parents, children: children, fileChanges: fileChanges, deletedLines: deletedLines, insertedLines: insertedLines, modifiedLines: modifiedLines, conflicts: conflicts)
-        XCTAssertEqual(changeSet.SHA1, SHA1)
-        XCTAssertEqual(changeSet.fullMessage, fullMessage)
-        XCTAssertEqual(changeSet.authorName, authorName)
-        XCTAssertEqual(changeSet.authorEmail, authorEmail)
-        XCTAssertEqual(changeSet.committerName, committerName)
-        XCTAssertEqual(changeSet.committerEmail, committerEmail)
-        XCTAssertEqual(changeSet.committerDate, committerDate)
-        XCTAssertEqual(changeSet.authorDate, authorDate)
-        XCTAssertEqual(changeSet.parents.count, parents.count)
-        for index in 0 ..< parents.count {
-            XCTAssertTrue(parents[index] == changeSet.parents[index])
+        let commit = GitCommit(SHA1: SHA1, fullMessage: "", authorName: "", authorEmail: "", committerName: "", committerEmail: "", committerDate: NSDate(), authorDate: NSDate(), parents: parents, fileChanges: [FileChange](), deletedLines: 0, insertedLines: 0, modifiedLines: 0, conflicts: 0)
+        for parent in parents {
+            (parent as! GitCommit).children.append(commit)
         }
-        XCTAssertEqual(changeSet.children.count, children.count)
-        for index in 0 ..< children.count {
-            XCTAssertTrue(children[index] == changeSet.children[index])
-        }
-        XCTAssertEqual(changeSet.fileChanges.count, fileChanges.count)
-        for index in 0 ..< fileChanges.count {
-            XCTAssertTrue(fileChanges[index] == changeSet.fileChanges[index])
-        }
-        XCTAssertEqual(changeSet.deletedLines, deletedLines)
-        XCTAssertEqual(changeSet.insertedLines, insertedLines)
-        XCTAssertEqual(changeSet.modifiedLines, modifiedLines)
-        XCTAssertEqual(changeSet.conflicts, conflicts)
+        return commit
+    }
+    
+    func buildBranch(name: String, tipCommit: ChangeSet) -> Branch {
+        let branch = GitBranch(name: name, tipCommit: tipCommit, remote: false)
+        (tipCommit as! GitCommit).tippedBranches = [branch]
+        
+        return branch
+    }
+    
+    func testThatBranchesReturnsExpectedBranches() {
+        /*
+             Commits graph:
+
+             *_    .3  ->branch 3
+             | |
+             * |   .2a ->branch 2a
+             | |
+             | *   .2b ->branch 2b
+             | |
+             | |_* .2c ->branch 2c
+             |_/
+             *     .1  ->branch 1
+             |
+             *     .0  ->branch 0
+         */
+        
+        let commit0 = buildCommit("0", parents: [ChangeSet]())
+        let branch0 = buildBranch("0", tipCommit: commit0)
+        let commit1 = buildCommit("1", parents: [commit0])
+        let branch1 = buildBranch("1", tipCommit: commit1)
+        let commit2a = buildCommit("2a", parents: [commit1])
+        let commit2b = buildCommit("2b", parents: [commit1])
+        let branch2b = buildBranch("2b", tipCommit: commit2b)
+        let commit2c = buildCommit("2c", parents: [commit1])
+        let branch2c = buildBranch("2c", tipCommit: commit2c)
+        let commit3 = buildCommit("3", parents: [commit2a, commit2b])
+        let branch3 = buildBranch("3", tipCommit: commit3)
+        
+        // test that unmerged branches are not branches of other commits with common ancestors
+        XCTAssertFalse(commit3.branches.contains({branch in
+            return branch == branch2c
+        }))
+        
+        // test that descendants' tipped branches are ancestor's branches
+        XCTAssertTrue(commit0.branches.contains({branch in
+            
+            return branch == branch0
+        }))
+        XCTAssertTrue(commit0.branches.contains({branch in
+            
+            return branch == branch1
+        }))
+        XCTAssertTrue(commit0.branches.contains({branch in
+            
+            return branch == branch2b
+        }))
+        XCTAssertTrue(commit0.branches.contains({branch in
+            
+            return branch == branch2c
+        }))
+        XCTAssertTrue(commit0.branches.contains({branch in
+            
+            return branch == branch3
+        }))
+        
+        // test that unmerged branches' commits only have its own tipped branch
+        XCTAssertEqual(commit2c.branches.count, 1)
+        XCTAssertTrue(commit2c.branches.contains({branch in
+            
+            return branch == branch2c
+        }))
+    }
+    
+    func testThatMergesReturnsExpectedCommits() {
+        /*
+         Commits graph:
+            *_    .4  ->branch 4
+            | \_
+            *_  | .3
+            | | |
+            * | | .2a
+            | | |
+            | * | .2b
+            | | |
+            | |_* .2c
+            |_/
+            *     .1
+            |
+            *     .0
+        */
+        
+        let commit0 = buildCommit("0", parents: [ChangeSet]())
+        let commit1 = buildCommit("1", parents: [commit0])
+        let commit2a = buildCommit("2a", parents: [commit1])
+        let commit2b = buildCommit("2b", parents: [commit1])
+        let commit2c = buildCommit("2c", parents: [commit1])
+        let commit3 = buildCommit("3", parents: [commit2a, commit2b])
+        let commit4 = buildCommit("4", parents: [commit3, commit2c])
+        _ = buildBranch("4", tipCommit: commit4)
+
+        // test that initial commit has all merges
+        XCTAssertEqual(commit0.merges.count, 2)
+        XCTAssertTrue(commit0.merges.contains({commit in
+            
+            return commit == commit4
+        }))
+        XCTAssertTrue(commit0.merges.contains({commit in
+            
+            return commit == commit3
+        }))
+        
+        // test that initial commit's child has all merges
+        XCTAssertEqual(commit1.merges.count, 2)
+        XCTAssertTrue(commit1.merges.contains({commit in
+            
+            return commit == commit4
+        }))
+        XCTAssertTrue(commit1.merges.contains({commit in
+            
+            return commit == commit3
+        }))
+        
+        // test that initial commit's first merge has only the initial commit's second merge
+        XCTAssertEqual(commit3.merges.count, 1)
+        XCTAssertTrue(commit3.merges.contains({commit in
+            
+            return commit == commit4
+        }))
+
+        // test that initial commit's first merge's parent has all merges
+        XCTAssertTrue(commit3.parents.contains({commit in
+            
+            return commit == commit2b
+        }))
+        XCTAssertEqual(commit2b.merges.count, 2)
+        XCTAssertTrue(commit2b.merges.contains({commit in
+            return commit == commit4
+        }))
+        XCTAssertTrue(commit2b.merges.contains({commit in
+            return commit == commit3
+        }))
+        
+        // test that initial commit's second merge's parent has only the initial commit's second merge
+        XCTAssertTrue(commit4.parents.contains({commit in
+            
+            return commit == commit2c
+        }))
+        XCTAssertEqual(commit2c.merges.count, 1)
+        XCTAssertTrue(commit2c.merges.contains({commit in
+            
+            return commit == commit4
+        }))
+
+        // test that initial commit's second merge doesn't have any merge
+        XCTAssertEqual(commit4.merges.count, 0)
     }
 }

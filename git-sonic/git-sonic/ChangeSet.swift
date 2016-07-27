@@ -112,6 +112,76 @@ public extension ChangeSet {
         
         return (deletedLines + modifiedLines)
     }
+    
+    var branches: [Branch] {
+        
+        var branches = [Branch]()
+        for tippedBranch in tippedBranches {
+            var append = true
+            for branch in branches {
+                if (branch == tippedBranch) {
+                    append = false
+                    
+                    break
+                }
+            }
+            if (append) {
+                branches.append(tippedBranch)
+            }
+        }
+        for child in children {
+            for childBranch in child.branches {
+                var append = true
+                for branch in branches {
+                    if (branch == childBranch) {
+                        append = false
+                        
+                        break
+                    }
+                }
+                if (append) {
+                    branches.append(childBranch)
+                }
+            }
+        }
+        
+        return branches
+    }
+    
+    var merges: [ChangeSet] {
+        
+        var merges = [ChangeSet]()
+        for child in children {
+            if (child.parents.count > 1) {
+                var append = true
+                for merge in merges {
+                    if (merge == child) {
+                        append = false
+                        
+                        break
+                    }
+                }
+                if (append) {
+                    merges.append(child)
+                }
+            }
+            for descendantMerge in child.merges {
+                var append = true
+                for merge in merges {
+                    if (merge == descendantMerge) {
+                        append = false
+                        
+                        break
+                    }
+                }
+                if (append) {
+                    merges.append(descendantMerge)
+                }
+            }
+        }
+        
+        return merges
+    }
 }
 
 public func ==(lhs: ChangeSet, rhs: ChangeSet) -> Bool {
