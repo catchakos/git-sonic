@@ -25,20 +25,174 @@ import XCTest
 
 class GitChangeSetExtensionTests: XCTestCase {
     
-    func buildCommit(SHA1: String, parents: [ChangeSet]) -> ChangeSet {
+    func buildCommit(SHA1: String, parents: [ChangeSet], message: String = "", insertedLines: Int = 0, modifiedLines: Int = 0, deletedLines: Int = 0) -> ChangeSet {
         
-        let commit = GitCommit(SHA1: SHA1, fullMessage: "", authorName: "", authorEmail: "", committerName: "", committerEmail: "", committerDate: NSDate(), authorDate: NSDate(), parents: parents, fileChanges: [FileChange](), deletedLines: 0, insertedLines: 0, modifiedLines: 0, conflicts: 0)
+        let commit = GitCommit(SHA1: SHA1, fullMessage: message, authorName: "", authorEmail: "", committerName: "", committerEmail: "", committerDate: NSDate(), authorDate: NSDate(), parents: parents, fileChanges: [FileChange](), deletedLines: deletedLines, insertedLines: insertedLines, modifiedLines: modifiedLines, conflicts: 0)
         for parent in parents {
             (parent as! GitCommit).children.append(commit)
         }
+        
         return commit
     }
     
-    func buildBranch(name: String, tipCommit: ChangeSet) -> Branch {
-        let branch = GitBranch(name: name, tipCommit: tipCommit, remote: false)
-        (tipCommit as! GitCommit).tippedBranches = [branch]
+    func buildBranch(name: String, tipCommit: ChangeSet, remote: Bool = false) -> Branch {
+        let branch = GitBranch(name: name, tipCommit: tipCommit, remote: remote)
+        (tipCommit as! GitCommit).tippedBranches.append(branch)
         
         return branch
+    }
+    
+    func buildTag(name: String, tipCommit: ChangeSet) -> Tag{
+        let tag = GitTag(name: name, message: "", tagger: "", tipCommit: tipCommit)
+        (tipCommit as! GitCommit).tags.append(tag)
+        
+        return tag
+    }
+    
+    func testThatShortSHA1LengthIs7() {
+
+        let commit = buildCommit("1272d4eb29bf1a7b4eb9c7b8fed58b44d547dc51", parents: [ChangeSet]())
+        XCTAssertEqual(commit.shortSHA1.characters.count, 7)
+    }
+    
+    func testThatShortSHA1IsPrefixOfSHA1() {
+        
+        let commit = buildCommit("1272d4eb29bf1a7b4eb9c7b8fed58b44d547dc51", parents: [ChangeSet]())
+        XCTAssertTrue(commit.SHA1.hasPrefix(commit.shortSHA1))
+    }
+
+    func testThatSummaryIsCorrect() {
+        
+        let commit = buildCommit("", parents: [ChangeSet](), message: "summary\ndescription")
+        XCTAssertEqual(commit.summary, "summary")
+    }
+
+    
+    func testThatSummaryIsPrefixOfMessage() {
+        
+        let commit = buildCommit("", parents: [ChangeSet](), message: "summary\ndescription")
+        XCTAssertTrue(commit.fullMessage.hasPrefix(commit.summary))
+    }
+    
+    func testThatSummaryDoesNotHaveNewLines() {
+        
+        let commit = buildCommit("", parents: [ChangeSet](), message: "summary\ndescription")
+        XCTAssertFalse(commit.summary.containsString("\n"))
+    }
+    
+    func testThatDescriptionIsNotNil() {
+        
+        let commit = buildCommit("", parents: [ChangeSet](), message: "summary\ndescription")
+        XCTAssertNotNil(commit.description)
+    }
+    
+    func testThatDescriptionCanBeNil() {
+        
+        let commit = buildCommit("", parents: [ChangeSet](), message: "summary without description")
+        XCTAssertNil(commit.description)
+    }
+    
+    func testThatDescriptionIsCorrect() {
+        
+        let commit = buildCommit("", parents: [ChangeSet](), message: "summary\ndescription")
+        XCTAssertEqual(commit.description, "description")
+    }
+    
+    func testThatDescriptionIsNotPrefixOfMessage() {
+        
+        let commit = buildCommit("", parents: [ChangeSet](), message: "summary\ndescription")
+        XCTAssertFalse(commit.fullMessage.hasPrefix(commit.description!))
+    }
+    
+    func testThatRootCanBeTrue() {
+        
+        let commit = buildCommit("", parents: [ChangeSet]())
+        XCTAssertTrue(commit.root)
+    }
+    
+    func testThatRootCanBeFalse() {
+        
+        let commit0 = buildCommit("0", parents: [ChangeSet]())
+        let commit1 = buildCommit("1", parents: [commit0])
+        XCTAssertTrue(commit0.root)
+        XCTAssertFalse(commit1.root)
+    }
+    
+    func testThatLeafCanBeTrue() {
+        
+        let commit = buildCommit("", parents: [ChangeSet]())
+        XCTAssertTrue(commit.leaf)
+    }
+    
+    func testThatLeafCanBeFalse() {
+        
+        let commit0 = buildCommit("0", parents: [ChangeSet]())
+        let commit1 = buildCommit("1", parents: [commit0])
+        XCTAssertTrue(commit1.leaf)
+        XCTAssertFalse(commit0.leaf)
+    }
+    
+    func testThatHasReferencesIsTrueWhenTippingTags() {
+        
+        let commit = buildCommit("", parents: [ChangeSet]())
+        _ = buildTag("", tipCommit: commit)
+        XCTAssertTrue(commit.hasReferences)
+    }
+    
+    func testThatHasReferencesIsTrueWhenTippingBranches() {
+        
+        let commit = buildCommit("", parents: [ChangeSet]())
+        _ = buildBranch("", tipCommit: commit)
+        XCTAssertTrue(commit.hasReferences)
+    }
+    
+    func testThatHasReferencesCanBeFalse() {
+        
+        let commit0 = buildCommit("0", parents: [ChangeSet]())
+        let commit1 = buildCommit("1", parents: [commit0])
+        XCTAssertFalse(commit1.hasReferences)
+        XCTAssertFalse(commit0.hasReferences)
+    }
+    
+    func testThatRemoteBranchesIsCorrect() {
+        
+        let commit = buildCommit("", parents: [ChangeSet]())
+        _ = buildBranch("", tipCommit: commit, remote: true)
+        XCTAssertEqual(commit.remoteBranches.count, 1)
+    }
+    
+    func testThatRemoteBranchesCanBeZero() {
+        
+        let commit = buildCommit("", parents: [ChangeSet]())
+        _ = buildBranch("", tipCommit: commit, remote: false)
+        XCTAssertEqual(commit.remoteBranches.count, 0)
+    }
+    
+    func testThatLocalBranchesIsCorrect() {
+        
+        let commit = buildCommit("", parents: [ChangeSet]())
+        _ = buildBranch("", tipCommit: commit, remote: true)
+        _ = buildBranch("", tipCommit: commit, remote: false)
+        XCTAssertEqual(commit.localBranches.count, 1)
+    }
+    
+    func testThatLocalBranchesCanBeZero() {
+        
+        let commit = buildCommit("", parents: [ChangeSet]())
+        _ = buildBranch("", tipCommit: commit, remote: true)
+        XCTAssertEqual(commit.localBranches.count, 0)
+    }
+    
+    func testThatInsertionsIsCorrect() {
+        
+        let commit = buildCommit("", parents: [ChangeSet](), insertedLines: 5, modifiedLines: 1)
+        XCTAssertEqual(commit.insertions, 5 + 1)
+    }
+    
+    func testThatDeletionsIsCorrect() {
+        
+        let commit = buildCommit("", parents: [ChangeSet](), insertedLines: 5, modifiedLines: 1, deletedLines: 3)
+        XCTAssertEqual(commit.deletions, 3 + 1)
     }
     
     func testThatBranchesReturnsExpectedBranches() {
