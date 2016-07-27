@@ -64,13 +64,13 @@ public extension ChangeSet {
         
         let components = fullMessage.componentsSeparatedByString("\n")
         
-        return components.last!
+        return components.first!
     }
     
     var description: String? {
         
         var description: String?
-        let range = fullMessage.rangeOfString("\(fullMessage)\n")
+        let range = fullMessage.rangeOfString("\n")
         if let range = range {
             description = fullMessage.substringFromIndex(range.endIndex)
         }
