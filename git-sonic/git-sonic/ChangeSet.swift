@@ -63,8 +63,9 @@ public extension ChangeSet {
     var summary: String {
         
         let components = fullMessage.componentsSeparatedByString("\n")
+        let whitespaceAndNewlineCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
         
-        return components.first!
+        return components.first!.stringByTrimmingCharactersInSet(whitespaceAndNewlineCharacterSet)
     }
     
     var description: String? {
@@ -73,6 +74,8 @@ public extension ChangeSet {
         let range = fullMessage.rangeOfString("\n")
         if let range = range {
             description = fullMessage.substringFromIndex(range.endIndex)
+            let whitespaceAndNewlineCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+            description = description!.stringByTrimmingCharactersInSet(whitespaceAndNewlineCharacterSet)
         }
         
         return description
