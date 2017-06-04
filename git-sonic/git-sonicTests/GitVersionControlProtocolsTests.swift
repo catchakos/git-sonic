@@ -25,13 +25,13 @@ import XCTest
 
 class GitVersionControlProtocolsTests: XCTestCase {
     
-    let aCommit = GitCommit(SHA1: "a SHA1", fullMessage: "a full message", authorName: "author name", authorEmail: "author email", committerName: "committer name", committerEmail: "committer email", committerDate: NSDate(), authorDate: NSDate(), parents: [ChangeSet](), fileChanges: [FileChange](), deletedLines: 1, insertedLines: 2, modifiedLines: 3, conflicts: 4)
+    let aCommit = GitCommit(SHA1: "a SHA1", fullMessage: "a full message", authorName: "author name", authorEmail: "author email", committerName: "committer name", committerEmail: "committer email", committerDate: Date(), authorDate: Date(), parents: [ChangeSet](), fileChanges: [FileChange](), deletedLines: 1, insertedLines: 2, modifiedLines: 3, conflicts: 4)
 
-    let anotherCommit = GitCommit(SHA1: "the SHA1", fullMessage: "the full message", authorName: "the author name", authorEmail: "the author email", committerName: "the committer name", committerEmail: "the committer email", committerDate: NSDate(), authorDate: NSDate(), parents: [ChangeSet](), fileChanges: [FileChange](), deletedLines: 4, insertedLines: 5, modifiedLines: 6, conflicts: 7)
+    let anotherCommit = GitCommit(SHA1: "the SHA1", fullMessage: "the full message", authorName: "the author name", authorEmail: "the author email", committerName: "the committer name", committerEmail: "the committer email", committerDate: Date(), authorDate: Date(), parents: [ChangeSet](), fileChanges: [FileChange](), deletedLines: 4, insertedLines: 5, modifiedLines: 6, conflicts: 7)
     
-    let aFileChange = GitFileChange(type: .Added, newFile: GitFile(path: "a path", SHA1: "a SHA1"), oldFile: nil)
+    let aFileChange = GitFileChange(type: .added, newFile: GitFile(path: "a path", SHA1: "a SHA1"), oldFile: nil)
 
-    let anotherFileChange = GitFileChange(type: .Deleted, newFile: GitFile(path: "the path", SHA1: "the SHA1"), oldFile: nil)
+    let anotherFileChange = GitFileChange(type: .deleted, newFile: GitFile(path: "the path", SHA1: "the SHA1"), oldFile: nil)
     
     func testThatGitBranchConstructorInitializesProperties() {
         
@@ -68,7 +68,7 @@ class GitVersionControlProtocolsTests: XCTestCase {
     
     func testThatGitFileChangeConstructorInitializesProperties() {
         
-        let type: FileChangeType = .Renamed
+        let type: FileChangeType = .renamed
         let newFile: File = GitFile(path: "a path", SHA1: "a SHA1")
         let oldFile: File = GitFile(path: "the path", SHA1: "the SHA1")
         let fileChange = GitFileChange(type: type, newFile: newFile, oldFile: oldFile)
@@ -83,10 +83,10 @@ class GitVersionControlProtocolsTests: XCTestCase {
         let fullMessage = "the full message"
         let authorName = "the author name"
         let authorEmail = "the author email"
-        let authorDate = NSDate()
+        let authorDate = Date()
         let committerName = "the committer name"
         let committerEmail = "the committer email"
-        let committerDate = NSDate()
+        let committerDate = Date()
         let parents: [ChangeSet] = [aCommit]
         let fileChanges: [FileChange] = [aFileChange, anotherFileChange]
         let deletedLines = 3

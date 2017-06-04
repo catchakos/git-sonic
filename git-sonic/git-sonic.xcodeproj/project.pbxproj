@@ -18,7 +18,6 @@
 		2AA233ED1D24869E001EF336 /* git_sonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA233EC1D24869E001EF336 /* git_sonicTests.swift */; };
 		2AA233F81D24869E001EF336 /* git_sonicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA233F71D24869E001EF336 /* git_sonicUITests.swift */; };
 		84018C1F1D30C632009EE8A0 /* GitUpKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84018C1D1D30C611009EE8A0 /* GitUpKit.framework */; };
-		84018C201D30C632009EE8A0 /* GitUpKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84018C1D1D30C611009EE8A0 /* GitUpKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		840F3B851D3BF1710061927C /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B7D1D3BF1710061927C /* Branch.swift */; };
 		840F3B861D3BF1710061927C /* ChangeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B7E1D3BF1710061927C /* ChangeSet.swift */; };
 		840F3B871D3BF1710061927C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B7F1D3BF1710061927C /* File.swift */; };
@@ -32,6 +31,8 @@
 		84F48D8A1D2C69C300A0E725 /* GitUpKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F48D891D2C69C300A0E725 /* GitUpKit.framework */; };
 		84F4A1251D482BD100519FF6 /* GitChangeSetExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F4A1241D482BD100519FF6 /* GitChangeSetExtensionTests.swift */; };
 		9D323945A55D1CA081480BB8 /* Pods_git_sonicTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87394652556DAE410D3A96B3 /* Pods_git_sonicTests.framework */; };
+		AC6797781EE4200B00911871 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6797761EE4200B00911871 /* Event+CoreDataClass.swift */; };
+		AC6797791EE4200B00911871 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6797771EE4200B00911871 /* Event+CoreDataProperties.swift */; };
 		E6E33297E12A2D0565502C82 /* Pods_git_sonicUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AA41AB157BA17E964D4966 /* Pods_git_sonicUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +60,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				84018C201D30C632009EE8A0 /* GitUpKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,6 +103,8 @@
 		87394652556DAE410D3A96B3 /* Pods_git_sonicTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_git_sonicTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90FEE96CF21E004E3ED20B21 /* Pods-git-sonicUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-git-sonicUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-git-sonicUITests/Pods-git-sonicUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A8927ACD30DA88560F1C823E /* Pods-git-sonic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-git-sonic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-git-sonic/Pods-git-sonic.debug.xcconfig"; sourceTree = "<group>"; };
+		AC6797761EE4200B00911871 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AC6797771EE4200B00911871 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BAB0D34198636DA3300BD976 /* Pods_git_sonic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_git_sonic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD92E06D2F0806DC8AB1C6AB /* Pods-git-sonicTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-git-sonicTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-git-sonicTests/Pods-git-sonicTests.release.xcconfig"; sourceTree = "<group>"; };
 		D5AA41AB157BA17E964D4966 /* Pods_git_sonicUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_git_sonicUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +166,8 @@
 		2AA233D11D24869D001EF336 /* git-sonic */ = {
 			isa = PBXGroup;
 			children = (
+				AC6797761EE4200B00911871 /* Event+CoreDataClass.swift */,
+				AC6797771EE4200B00911871 /* Event+CoreDataProperties.swift */,
 				840F3B7B1D3BF1590061927C /* version control protocols */,
 				840F3B8D1D3BF2760061927C /* git */,
 				2AA233D21D24869D001EF336 /* AppDelegate.swift */,
@@ -302,6 +306,7 @@
 				2AA233F01D24869E001EF336 /* Frameworks */,
 				2AA233F11D24869E001EF336 /* Resources */,
 				1A86FB80CD786769EF46744F /* [CP] Copy Pods Resources */,
+				79194A347E67C647E5AC54EE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -325,13 +330,16 @@
 				TargetAttributes = {
 					2AA233CE1D24869D001EF336 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0830;
 					};
 					2AA233E71D24869E001EF336 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0830;
 						TestTargetID = 2AA233CE1D24869D001EF336;
 					};
 					2AA233F21D24869E001EF336 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0830;
 						TestTargetID = 2AA233CE1D24869D001EF336;
 					};
 				};
@@ -414,6 +422,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-git-sonicUITests/Pods-git-sonicUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		79194A347E67C647E5AC54EE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-git-sonicUITests/Pods-git-sonicUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7BFEFB31596702A0857E08AE /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -471,7 +494,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E607B0D16853630A6BC1B883 /* [CP] Check Pods Manifest.lock */ = {
@@ -486,7 +509,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		EB6EC7A52D4C024D7C270E82 /* [CP] Check Pods Manifest.lock */ = {
@@ -501,7 +524,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -518,8 +541,10 @@
 				2AA233D61D24869E001EF336 /* git_sonic.xcdatamodeld in Sources */,
 				840F3B861D3BF1710061927C /* ChangeSet.swift in Sources */,
 				840F3B941D3BF2890061927C /* GitFile.swift in Sources */,
+				AC6797781EE4200B00911871 /* Event+CoreDataClass.swift in Sources */,
 				2AA233D81D24869E001EF336 /* MasterViewController.swift in Sources */,
 				840F3B871D3BF1710061927C /* File.swift in Sources */,
+				AC6797791EE4200B00911871 /* Event+CoreDataProperties.swift in Sources */,
 				840F3B921D3BF2890061927C /* GitBranch.swift in Sources */,
 				2AA233DA1D24869E001EF336 /* DetailViewController.swift in Sources */,
 				840F3B951D3BF2890061927C /* GitTag.swift in Sources */,
@@ -676,6 +701,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "phonegroove.git-sonic";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/git-sonic/git_sonic-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -691,6 +717,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "phonegroove.git-sonic";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/git-sonic/git_sonic-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -706,6 +733,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "phonegroove.git-sonicTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/git-sonic/git_sonic-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/git-sonic.app/git-sonic";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -723,6 +751,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "phonegroove.git-sonicTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/git-sonic/git_sonic-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/git-sonic.app/git-sonic";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -737,6 +766,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "phonegroove.git-sonicUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "git-sonic";
 			};
 			name = Debug;
@@ -750,6 +780,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "phonegroove.git-sonicUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "git-sonic";
 			};
 			name = Release;

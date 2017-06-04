@@ -25,9 +25,9 @@ import XCTest
 
 class GitChangeSetExtensionTests: XCTestCase {
     
-    func buildCommit(SHA1: String, parents: [ChangeSet], message: String = "", insertedLines: Int = 0, modifiedLines: Int = 0, deletedLines: Int = 0) -> ChangeSet {
+    func buildCommit(_ SHA1: String, parents: [ChangeSet], message: String = "", insertedLines: Int = 0, modifiedLines: Int = 0, deletedLines: Int = 0) -> ChangeSet {
         
-        let commit = GitCommit(SHA1: SHA1, fullMessage: message, authorName: "", authorEmail: "", committerName: "", committerEmail: "", committerDate: NSDate(), authorDate: NSDate(), parents: parents, fileChanges: [FileChange](), deletedLines: deletedLines, insertedLines: insertedLines, modifiedLines: modifiedLines, conflicts: 0)
+        let commit = GitCommit(SHA1: SHA1, fullMessage: message, authorName: "", authorEmail: "", committerName: "", committerEmail: "", committerDate: Date(), authorDate: Date(), parents: parents, fileChanges: [FileChange](), deletedLines: deletedLines, insertedLines: insertedLines, modifiedLines: modifiedLines, conflicts: 0)
         for parent in parents {
             (parent as! GitCommit).children.append(commit)
         }
@@ -35,14 +35,14 @@ class GitChangeSetExtensionTests: XCTestCase {
         return commit
     }
     
-    func buildBranch(name: String, tipCommit: ChangeSet, remote: Bool = false) -> Branch {
+    func buildBranch(_ name: String, tipCommit: ChangeSet, remote: Bool = false) -> Branch {
         let branch = GitBranch(name: name, tipCommit: tipCommit, remote: remote)
         (tipCommit as! GitCommit).tippedBranches.append(branch)
         
         return branch
     }
     
-    func buildTag(name: String, tipCommit: ChangeSet) -> Tag{
+    func buildTag(_ name: String, tipCommit: ChangeSet) -> Tag{
         let tag = GitTag(name: name, message: "", tagger: "", tipCommit: tipCommit)
         (tipCommit as! GitCommit).tags.append(tag)
         
@@ -77,7 +77,7 @@ class GitChangeSetExtensionTests: XCTestCase {
     func testThatSummaryDoesNotHaveNewLines() {
         
         let commit = buildCommit("", parents: [ChangeSet](), message: "summary\ndescription")
-        XCTAssertFalse(commit.summary.containsString("\n"))
+        XCTAssertFalse(commit.summary.contains("\n"))
     }
     
     func testThatDescriptionIsNotNil() {
@@ -225,35 +225,35 @@ class GitChangeSetExtensionTests: XCTestCase {
         let branch3 = buildBranch("3", tipCommit: commit3)
         
         // test that unmerged branches are not branches of other commits with common ancestors
-        XCTAssertFalse(commit3.branches.contains({branch in
+        XCTAssertFalse(commit3.branches.contains(where: {branch in
             return branch == branch2c
         }))
         
         // test that descendants' tipped branches are ancestor's branches
-        XCTAssertTrue(commit0.branches.contains({branch in
+        XCTAssertTrue(commit0.branches.contains(where: {branch in
             
             return branch == branch0
         }))
-        XCTAssertTrue(commit0.branches.contains({branch in
+        XCTAssertTrue(commit0.branches.contains(where: {branch in
             
             return branch == branch1
         }))
-        XCTAssertTrue(commit0.branches.contains({branch in
+        XCTAssertTrue(commit0.branches.contains(where: {branch in
             
             return branch == branch2b
         }))
-        XCTAssertTrue(commit0.branches.contains({branch in
+        XCTAssertTrue(commit0.branches.contains(where: {branch in
             
             return branch == branch2c
         }))
-        XCTAssertTrue(commit0.branches.contains({branch in
+        XCTAssertTrue(commit0.branches.contains(where: {branch in
             
             return branch == branch3
         }))
         
         // test that unmerged branches' commits only have its own tipped branch
         XCTAssertEqual(commit2c.branches.count, 1)
-        XCTAssertTrue(commit2c.branches.contains({branch in
+        XCTAssertTrue(commit2c.branches.contains(where: {branch in
             
             return branch == branch2c
         }))
@@ -288,53 +288,53 @@ class GitChangeSetExtensionTests: XCTestCase {
 
         // test that initial commit has all merges
         XCTAssertEqual(commit0.merges.count, 2)
-        XCTAssertTrue(commit0.merges.contains({commit in
+        XCTAssertTrue(commit0.merges.contains(where: {commit in
             
             return commit == commit4
         }))
-        XCTAssertTrue(commit0.merges.contains({commit in
+        XCTAssertTrue(commit0.merges.contains(where: {commit in
             
             return commit == commit3
         }))
         
         // test that initial commit's child has all merges
         XCTAssertEqual(commit1.merges.count, 2)
-        XCTAssertTrue(commit1.merges.contains({commit in
+        XCTAssertTrue(commit1.merges.contains(where: {commit in
             
             return commit == commit4
         }))
-        XCTAssertTrue(commit1.merges.contains({commit in
+        XCTAssertTrue(commit1.merges.contains(where: {commit in
             
             return commit == commit3
         }))
         
         // test that initial commit's first merge has only the initial commit's second merge
         XCTAssertEqual(commit3.merges.count, 1)
-        XCTAssertTrue(commit3.merges.contains({commit in
+        XCTAssertTrue(commit3.merges.contains(where: {commit in
             
             return commit == commit4
         }))
 
         // test that initial commit's first merge's parent has all merges
-        XCTAssertTrue(commit3.parents.contains({commit in
+        XCTAssertTrue(commit3.parents.contains(where: {commit in
             
             return commit == commit2b
         }))
         XCTAssertEqual(commit2b.merges.count, 2)
-        XCTAssertTrue(commit2b.merges.contains({commit in
+        XCTAssertTrue(commit2b.merges.contains(where: {commit in
             return commit == commit4
         }))
-        XCTAssertTrue(commit2b.merges.contains({commit in
+        XCTAssertTrue(commit2b.merges.contains(where: {commit in
             return commit == commit3
         }))
         
         // test that initial commit's second merge's parent has only the initial commit's second merge
-        XCTAssertTrue(commit4.parents.contains({commit in
+        XCTAssertTrue(commit4.parents.contains(where: {commit in
             
             return commit == commit2c
         }))
         XCTAssertEqual(commit2c.merges.count, 1)
-        XCTAssertTrue(commit2c.merges.contains({commit in
+        XCTAssertTrue(commit2c.merges.contains(where: {commit in
             
             return commit == commit4
         }))

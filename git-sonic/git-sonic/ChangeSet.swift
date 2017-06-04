@@ -30,11 +30,11 @@ public protocol ChangeSet {
 
     var authorName: String { get }
     var authorEmail: String { get }
-    var authorDate: NSDate { get }
+    var authorDate: Date { get }
     
     var committerName: String { get }
     var committerEmail: String { get }
-    var committerDate: NSDate { get }
+    var committerDate: Date { get }
 
     var parents: [ChangeSet] { get }
     var children: [ChangeSet] { get }
@@ -55,27 +55,27 @@ public extension ChangeSet {
     
     var shortSHA1: String {
         
-        let index = SHA1.startIndex.advancedBy(7)
+        let index = SHA1.characters.index(SHA1.startIndex, offsetBy: 7)
         
-        return SHA1.substringToIndex(index)
+        return SHA1.substring(to: index)
     }
     
     var summary: String {
         
-        let components = fullMessage.componentsSeparatedByString("\n")
-        let whitespaceAndNewlineCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        let components = fullMessage.components(separatedBy: "\n")
+        let whitespaceAndNewlineCharacterSet = CharacterSet.whitespacesAndNewlines
         
-        return components.first!.stringByTrimmingCharactersInSet(whitespaceAndNewlineCharacterSet)
+        return components.first!.trimmingCharacters(in: whitespaceAndNewlineCharacterSet)
     }
     
     var description: String? {
         
         var description: String?
-        let range = fullMessage.rangeOfString("\n")
+        let range = fullMessage.range(of: "\n")
         if let range = range {
-            description = fullMessage.substringFromIndex(range.endIndex)
-            let whitespaceAndNewlineCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
-            description = description!.stringByTrimmingCharactersInSet(whitespaceAndNewlineCharacterSet)
+            description = fullMessage.substring(from: range.upperBound)
+            let whitespaceAndNewlineCharacterSet = CharacterSet.whitespacesAndNewlines
+            description = description!.trimmingCharacters(in: whitespaceAndNewlineCharacterSet)
         }
         
         return description

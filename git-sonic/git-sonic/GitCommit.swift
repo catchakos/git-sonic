@@ -30,11 +30,11 @@ class GitCommit: ChangeSet, Equatable {
     
     var authorName: String
     var authorEmail: String
-    var authorDate: NSDate
+    var authorDate: Date
     
     var committerName: String
     var committerEmail: String
-    var committerDate: NSDate
+    var committerDate: Date
     
     var parents: [ChangeSet]
     var children: [ChangeSet]
@@ -50,7 +50,7 @@ class GitCommit: ChangeSet, Equatable {
 
     var conflicts: Int
     
-    init(SHA1: String, fullMessage: String, authorName: String, authorEmail: String, committerName: String, committerEmail: String, committerDate: NSDate, authorDate: NSDate, parents: [ChangeSet], fileChanges: [FileChange], deletedLines: Int, insertedLines: Int, modifiedLines: Int, conflicts: Int) {
+    init(SHA1: String, fullMessage: String, authorName: String, authorEmail: String, committerName: String, committerEmail: String, committerDate: Date, authorDate: Date, parents: [ChangeSet], fileChanges: [FileChange], deletedLines: Int, insertedLines: Int, modifiedLines: Int, conflicts: Int) {
         
         self.SHA1 = SHA1
         self.fullMessage = fullMessage

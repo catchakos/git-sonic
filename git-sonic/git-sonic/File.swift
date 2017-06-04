@@ -24,12 +24,12 @@ import Foundation
 
 public enum FileChangeType {
     
-    case Added
-    case Deleted
-    case Modified
-    case Renamed
-    case Copied
-    case TypeChanged
+    case added
+    case deleted
+    case modified
+    case renamed
+    case copied
+    case typeChanged
 }
 
 public protocol FileChange {
