@@ -27,6 +27,9 @@
 		840F3B941D3BF2890061927C /* GitFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B901D3BF2890061927C /* GitFile.swift */; };
 		840F3B951D3BF2890061927C /* GitTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F3B911D3BF2890061927C /* GitTag.swift */; };
 		84F1B5C61D3D9C5E00704C8C /* GitVersionControlProtocolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F1B5C51D3D9C5E00704C8C /* GitVersionControlProtocolsTests.swift */; };
+		5E5B57A81D2E8DE000F7E7BA /* PDInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5B57A71D2E8DE000F7E7BA /* PDInstance.swift */; };
+		5E5B57AA1D2E93B000F7E7BA /* test.pd in Resources */ = {isa = PBXBuildFile; fileRef = 5E5B57A91D2E93B000F7E7BA /* test.pd */; };
+		84F48D861D2C684200A0E725 /* GitUpKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F48D851D2C684200A0E725 /* GitUpKit.framework */; };
 		84F48D881D2C69BB00A0E725 /* GitUpKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F48D871D2C69BB00A0E725 /* GitUpKit.framework */; };
 		84F48D8A1D2C69C300A0E725 /* GitUpKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F48D891D2C69C300A0E725 /* GitUpKit.framework */; };
 		84F4A1251D482BD100519FF6 /* GitChangeSetExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F4A1241D482BD100519FF6 /* GitChangeSetExtensionTests.swift */; };
@@ -86,6 +89,8 @@
 		4E68161997FFC03040267EAE /* Pods-git-sonicTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-git-sonicTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-git-sonicTests/Pods-git-sonicTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5E48A3791D2D0C000007DDE2 /* git_sonic-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "git_sonic-Bridging-Header.h"; sourceTree = "<group>"; };
 		5E48A37A1D2D0CCF0007DDE2 /* libpd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libpd.framework; path = "../../Library/Developer/Xcode/DerivedData/git-sonic-gfqbrzfmkoxzizfxhpaurkfaazmx/Build/Products/Debug-iphonesimulator/libpd/libpd.framework"; sourceTree = "<group>"; };
+		5E5B57A71D2E8DE000F7E7BA /* PDInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDInstance.swift; sourceTree = "<group>"; };
+		5E5B57A91D2E93B000F7E7BA /* test.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.pd; sourceTree = "<group>"; };
 		7A2DCE72E27FC3791DA90287 /* Pods-git-sonicUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-git-sonicUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-git-sonicUITests/Pods-git-sonicUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		84018C1D1D30C611009EE8A0 /* GitUpKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitUpKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/git-sonic-esjtqodwdwjtwmebdjmkmgxlvghq/Build/Products/Debug-iphonesimulator/GitUpKit.framework"; sourceTree = "<group>"; };
 		840F3B7D1D3BF1710061927C /* Branch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
@@ -174,6 +179,8 @@
 				2AA233D71D24869E001EF336 /* MasterViewController.swift */,
 				5E48A3791D2D0C000007DDE2 /* git_sonic-Bridging-Header.h */,
 				2AA233D91D24869E001EF336 /* DetailViewController.swift */,
+				5E5B57A71D2E8DE000F7E7BA /* PDInstance.swift */,
+				5E5B57A91D2E93B000F7E7BA /* test.pd */,
 				2AA233DB1D24869E001EF336 /* Main.storyboard */,
 				2AA233DE1D24869E001EF336 /* Assets.xcassets */,
 				2AA233E01D24869E001EF336 /* LaunchScreen.storyboard */,
@@ -370,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AA233E21D24869E001EF336 /* LaunchScreen.storyboard in Resources */,
+				5E5B57AA1D2E93B000F7E7BA /* test.pd in Resources */,
 				2AA233DF1D24869E001EF336 /* Assets.xcassets in Resources */,
 				2AA233DD1D24869E001EF336 /* Main.storyboard in Resources */,
 			);
@@ -536,6 +544,7 @@
 			files = (
 				840F3B8B1D3BF1710061927C /* Tag.swift in Sources */,
 				840F3B931D3BF2890061927C /* GitCommit.swift in Sources */,
+				5E5B57A81D2E8DE000F7E7BA /* PDInstance.swift in Sources */,
 				2AA233D31D24869D001EF336 /* AppDelegate.swift in Sources */,
 				840F3B851D3BF1710061927C /* Branch.swift in Sources */,
 				2AA233D61D24869E001EF336 /* git_sonic.xcdatamodeld in Sources */,
