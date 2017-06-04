@@ -30,6 +30,9 @@
 		5E5B57A81D2E8DE000F7E7BA /* PDInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5B57A71D2E8DE000F7E7BA /* PDInstance.swift */; };
 		5E5B57AA1D2E93B000F7E7BA /* test.pd in Resources */ = {isa = PBXBuildFile; fileRef = 5E5B57A91D2E93B000F7E7BA /* test.pd */; };
 		84F48D861D2C684200A0E725 /* GitUpKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F48D851D2C684200A0E725 /* GitUpKit.framework */; };
+		84018C201D30C632009EE8A0 /* GitUpKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84018C1D1D30C611009EE8A0 /* GitUpKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84018C241D30D2B7009EE8A0 /* GitFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84018C231D30D2B7009EE8A0 /* GitFacade.swift */; };
+		84018C261D30DA81009EE8A0 /* GitFacadeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84018C251D30DA81009EE8A0 /* GitFacadeTests.swift */; };
 		84F48D881D2C69BB00A0E725 /* GitUpKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F48D871D2C69BB00A0E725 /* GitUpKit.framework */; };
 		84F48D8A1D2C69C300A0E725 /* GitUpKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F48D891D2C69C300A0E725 /* GitUpKit.framework */; };
 		84F4A1251D482BD100519FF6 /* GitChangeSetExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F4A1241D482BD100519FF6 /* GitChangeSetExtensionTests.swift */; };
@@ -102,6 +105,8 @@
 		840F3B901D3BF2890061927C /* GitFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitFile.swift; sourceTree = "<group>"; };
 		840F3B911D3BF2890061927C /* GitTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitTag.swift; sourceTree = "<group>"; };
 		84F1B5C51D3D9C5E00704C8C /* GitVersionControlProtocolsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitVersionControlProtocolsTests.swift; sourceTree = "<group>"; };
+		84018C231D30D2B7009EE8A0 /* GitFacade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitFacade.swift; sourceTree = "<group>"; };
+		84018C251D30DA81009EE8A0 /* GitFacadeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitFacadeTests.swift; sourceTree = "<group>"; };
 		84F48D871D2C69BB00A0E725 /* GitUpKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitUpKit.framework; path = "Submodules/GitUp/GitUpKit/build/Debug-iphoneos/GitUpKit.framework"; sourceTree = "<group>"; };
 		84F48D891D2C69C300A0E725 /* GitUpKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GitUpKit.framework; path = "Submodules/GitUp/GitUpKit/build/Debug-iphoneos/GitUpKit.framework"; sourceTree = "<group>"; };
 		84F4A1241D482BD100519FF6 /* GitChangeSetExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitChangeSetExtensionTests.swift; sourceTree = "<group>"; };
@@ -181,6 +186,7 @@
 				2AA233D91D24869E001EF336 /* DetailViewController.swift */,
 				5E5B57A71D2E8DE000F7E7BA /* PDInstance.swift */,
 				5E5B57A91D2E93B000F7E7BA /* test.pd */,
+				84018C231D30D2B7009EE8A0 /* GitFacade.swift */,
 				2AA233DB1D24869E001EF336 /* Main.storyboard */,
 				2AA233DE1D24869E001EF336 /* Assets.xcassets */,
 				2AA233E01D24869E001EF336 /* LaunchScreen.storyboard */,
@@ -196,6 +202,7 @@
 				2AA233EC1D24869E001EF336 /* git_sonicTests.swift */,
 				84F4A1241D482BD100519FF6 /* GitChangeSetExtensionTests.swift */,
 				84F1B5C51D3D9C5E00704C8C /* GitVersionControlProtocolsTests.swift */,
+				84018C251D30DA81009EE8A0 /* GitFacadeTests.swift */,
 				2AA233EE1D24869E001EF336 /* Info.plist */,
 			);
 			path = "git-sonicTests";
@@ -555,6 +562,7 @@
 				840F3B871D3BF1710061927C /* File.swift in Sources */,
 				AC6797791EE4200B00911871 /* Event+CoreDataProperties.swift in Sources */,
 				840F3B921D3BF2890061927C /* GitBranch.swift in Sources */,
+				84018C241D30D2B7009EE8A0 /* GitFacade.swift in Sources */,
 				2AA233DA1D24869E001EF336 /* DetailViewController.swift in Sources */,
 				840F3B951D3BF2890061927C /* GitTag.swift in Sources */,
 			);
@@ -564,6 +572,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84018C261D30DA81009EE8A0 /* GitFacadeTests.swift in Sources */,
 				2AA233ED1D24869E001EF336 /* git_sonicTests.swift in Sources */,
 				84F1B5C61D3D9C5E00704C8C /* GitVersionControlProtocolsTests.swift in Sources */,
 				84F4A1251D482BD100519FF6 /* GitChangeSetExtensionTests.swift in Sources */,
@@ -744,7 +753,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/git-sonic/git_sonic-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/git-sonic.app/git-sonic";
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = Pods/libpd/objc;
 			};
 			name = Debug;
 		};
@@ -762,7 +771,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/git-sonic/git_sonic-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/git-sonic.app/git-sonic";
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = Pods/libpd/objc;
 			};
 			name = Release;
 		};
