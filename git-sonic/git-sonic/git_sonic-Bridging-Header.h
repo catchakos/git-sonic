@@ -8,4 +8,5 @@
 
 
 #import "PdAudioController.h"
+#import "PdBase.h"
 #import <GitUpKit/GitUpKit.h>

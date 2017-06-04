@@ -10,10 +10,11 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    let instance = PDInstance()
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
 
-    var detailItem: AnyObject? {
+    var detailItem: Event? {
         didSet {
             // Update the view.
             self.configureView()
@@ -24,7 +25,7 @@ class DetailViewController: UIViewController {
         // Update the user interface for the detail item.
         if let detail = self.detailItem {
             if let label = self.detailDescriptionLabel {
-                label.text = detail.valueForKey("timeStamp")!.description
+                label.text = detail.timeStamp?.description
             }
         }
     }
@@ -33,6 +34,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
+        instance.launchPD()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +42,9 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func changedSliderValue(sender: UISlider) {
+        instance.changeFreq(hz: sender.value)
+    }
+    
 }
 

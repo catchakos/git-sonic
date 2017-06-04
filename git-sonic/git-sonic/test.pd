@@ -1,0 +1,17 @@
+#N canvas 1118 225 450 300 10;
+#X obj 135 113 osc~;
+#X obj 131 161 dac~;
+#X obj 159 76 hsl 128 15 40 440 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 5715 1;
+#X obj 225 16 loadbang;
+#X msg 225 41 220;
+#X obj 201 158 print oscHz;
+#X obj 108 14 r frequency;
+#X connect 0 0 1 0;
+#X connect 0 0 1 1;
+#X connect 2 0 0 0;
+#X connect 2 0 5 0;
+#X connect 3 0 4 0;
+#X connect 4 0 2 0;
+#X connect 6 0 0 0;
+#X connect 6 0 2 0;
